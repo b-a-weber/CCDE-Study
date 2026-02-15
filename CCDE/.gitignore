@@ -1,4 +1,4 @@
 
-.gitignore
-/CCDE/Template/
-/CCDE/.obisidian/
+/.gitignore
+/Template/
+/.obisidian/
