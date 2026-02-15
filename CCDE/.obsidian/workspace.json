@@ -67,14 +67,14 @@
             "id": "5788674e0cb6db03",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "02-Transport Technologies/Ethernet Transport.md",
-                "mode": "source",
-                "source": false
+                "aFile": ".gitignore",
+                "bFile": ".gitignore",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "Ethernet Transport"
+              "icon": "diff",
+              "title": "Diff: .gitignore  (Working Tree)"
             }
           }
         ],
@@ -252,7 +252,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "84dbf5253fb1c336",
+  "active": "5788674e0cb6db03",
   "lastOpenFiles": [
     "git.gitignore.md",
     "02-Transport Technologies/Ethernet Transport.md",
