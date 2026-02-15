@@ -67,14 +67,14 @@
             "id": "5788674e0cb6db03",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".gitignore",
-                "bFile": ".gitignore",
-                "aRef": ""
+                "file": "02-Transport Technologies/Ethernet Transport.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: .gitignore  (Working Tree)"
+              "icon": "lucide-file",
+              "title": "Ethernet Transport"
             }
           }
         ],
