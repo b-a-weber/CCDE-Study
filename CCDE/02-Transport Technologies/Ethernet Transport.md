@@ -1,5 +1,5 @@
 
-tags:
+tags: #ccde #transport #ethernet
 domain: 02-Transport Technologies
 subdomain: Ethernet
 related: []
