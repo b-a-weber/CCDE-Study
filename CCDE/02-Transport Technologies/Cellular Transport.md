@@ -1,16 +1,13 @@
-
-tags: #ccde #transport #ethernet
+tags: #ccde #transport #cellular #wireless
 domain: 02-Transport Technologies
-subdomain: Ethernet protocol
-related: []
+subdomain: Cellular transport (4G/5G/LTE)
+related: 
 status: draft
-date created: 2026-02-15 16:15
-last modified: 2026-02-15 16:19
+date created: 2026-02-15 17:58
+last modified: 2026-02-15 17:58
 
 
 ## Overview
-Ethernet is a Layer 2 transport protocol that allows for the transmission of Internet Protocol (IP) packets using encapsulation. It is the standard transmission protocol for Layer 2 networks. 
-
 
 ## What Problem Does This Solve 
 
