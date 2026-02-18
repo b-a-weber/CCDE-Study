@@ -31,7 +31,9 @@ Ethernet won out against other transport technologies due to consistent increase
 
 Ethernet networks communicate data between hosts using *frames*, which is a standardised data format used to transport data across L2 networks. There are multiple different types of Ethernet frames. The format of the most common Ethernet frame (Ethernet II/DIX) is shown below.
 
-![](Pasted%20image%2020260219054204.png)
+
+![](attachments/Pasted%20image%2020260219054827.png)
+
 
 The standard Ethernet frame is 1518 bytes. The actual size of the Ethernet frame will depend on the data sent within the frame. Some additional features of the Ethernet protocol (802.1Q, QinQ) require additional information to be transmitted within the frame and therefore are slightly larger than a typical Ethernet frame.
 
