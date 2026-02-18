@@ -9,7 +9,7 @@ last modified: 2026-02-15 16:19
 
 
 ## Overview
-An Ethernet frame is a Layer 2 transport protocol that allows for the switching of data in a L2 network using Media Access Control (MAC) addresses. Ethernet frames are designed to be transmitted using Ethernet physical media (this media may support the encapsulation of higher level protocols, like copper or fiber optic cables, or may not, such as coaxial cable).
+An Ethernet frame is a Layer 2 transport mechanism that allows for the switching of data in a L2 network using Media Access Control (MAC) addresses. Ethernet frames are designed to be transmitted using Ethernet physical media. This media may support the encapsulation of higher level protocols (like copper or fiber) or may not (like coaxial cable).
 
 The first Ethernet network was created in 1980 at Xerox Parc to connect a computer to a laser printer (at the time, it was called a DIX frame, short for Digital, Intel, and Xerox). It was later standardised by the IEEE in the 802.3 standard for Carrier Sense Multiple Access for Collision Detection (CSMA/CD). 
 
@@ -27,8 +27,15 @@ Ethernet won out against other transport technologies due to consistent increase
 	a) How can I reliably forward data from one host to another within the same L2 broadcast domain?
 	b) How can I send higher-level protocols (ie. IP, TCP) within a L2 frame?
 	c) How can I logically separate and join physical links interconnecting different broadcast domains?
-
 ## How It Works 
+
+Ethernet networks communicate data between hosts using *frames*, which is a standardised data format used to transport data across L2 networks. There are multiple different types of Ethernet frames. The format of the most common Ethernet frame (Ethernet II/DIX) is shown below:
+
+![[Pasted image 20260218052232.png]]
+
+The standard Ethernet frame is 1518 bytes. The actual size of the Ethernet frame will depend on the data sent within the frame. Some additional features of the Ethernet protocol (802.1Q, QinQ) require additional information to be transmitted within the frame and therefore are slightly larger than a typical Ethernet frame.
+
+The Ethernet preamble is an alternating sequence of bits (01010101) that signals its own conclusion. The reason for this sequence is to synchronize the receiver's clock edge to the incoming signal. The preamble ensures that any oscillation between the sender and receiver's transmissions are accounted for by the receiver's Phased Lock-Loop (PLL).
 ## Design Considerations 
 ## Scalability 
 ## Resilience and Redundancy 
