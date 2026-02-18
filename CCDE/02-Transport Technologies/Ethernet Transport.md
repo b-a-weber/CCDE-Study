@@ -35,7 +35,15 @@ Ethernet networks communicate data between hosts using *frames*, which is a stan
 
 The standard Ethernet frame is 1518 bytes. The actual size of the Ethernet frame will depend on the data sent within the frame. Some additional features of the Ethernet protocol (802.1Q, QinQ) require additional information to be transmitted within the frame and therefore are slightly larger than a typical Ethernet frame.
 
-The Ethernet preamble is an alternating sequence of bits (01010101) that signals its own conclusion. The reason for this sequence is to synchronize the receiver's clock edge to the incoming signal. The preamble ensures that any oscillation between the sender and receiver's transmissions are accounted for by the receiver's Phased Lock-Loop (PLL).
+The Ethernet preamble is an 7 byte alternating sequence of bits (01010101). The reason for this sequence is to synchronize the receiver's clock edge to the incoming signal. The preamble ensures that any oscillation between the sender and receiver's transmissions are accounted for by the receiver's Phased Lock-Loop (PLL). The preamble is concluded by the transmission of the Start Frame Delimeter, which is a 1 byte sequence of data that ends in two positive bits (e.g. 1011). The SFD component of an Ethernet frame signals to the receiver that the content of the frame will be sent next.
+
+The next two components of an Ethernet frame are the Destination Address (DA) and the Source Address (SA). Addresses in Ethernet frames are represented as MAC addresses, which are a 6 byte value represented as six hexadecimal pairs (e.g. 0F:6E:F9:54:A1:AA). The first 3 bytes of a MAC address identify the organisation that the NIC comes from - this is known as the Organisationally Unique Identifier (OUI). The first bit of the OUI signals whether the frame uses multicast (known as the LSB). The second bit of the OUI identifies whether the OUI has been manually set (say, in the case of a VM) or set by the issuing organisation. The second 3 bytes of the MAC address are specific to the NIC and are used to uniquely identify different devices created by the same manufacturer.
+
+The DA is sent before the SA to allow for processing efficiencies. If the DA does not match the NIC's MAC address, then the frame can be dropped. If it does match the MAC address, then a new entry is added to the Content Addressable Memory (CAM) table to allow frames to be forwarded. In modern switches with purpose-built ASICs, switching is done at line rate using the CAM table without punting frames to the CPU. CAM is closely coupled with the ASIC - when data is provided to a switch's CAM, the comparison against existing MAC entries is done in parallel. Each row of the CAM table performs a simultaneous check against the data provided to the switch in a single clock cycle, with the appropriate match returning the switch port to forward the frame from. 
+
+
+
+
 ## Design Considerations 
 ## Scalability 
 ## Resilience and Redundancy 
