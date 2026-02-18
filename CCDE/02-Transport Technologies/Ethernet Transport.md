@@ -29,7 +29,7 @@ Ethernet won out against other transport technologies due to consistent increase
 	c) How can I logically separate and join physical links interconnecting different broadcast domains?
 ## How It Works 
 
-Ethernet networks communicate data between hosts using *frames*, which is a standardised data format used to transport data across L2 networks. There are multiple different types of Ethernet frames. The format of the most common Ethernet frame (Ethernet II/DIX) is shown below:
+Ethernet networks communicate data between hosts using *frames*, which is a standardised data format used to transport data across L2 networks. There are multiple different types of Ethernet frames. The format of the most common Ethernet frame (Ethernet II/DIX) is shown below.
 
 ![](Pasted%20image%2020260219054204.png)
 
