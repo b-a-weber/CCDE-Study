@@ -9,9 +9,9 @@ last modified: 2026-02-15 16:19
 
 
 ## Overview
-An Ethernet frame is a Layer 2 transport mechanism that allows for the switching of data in a L2 network using Media Access Control (MAC) addresses. Ethernet frames are designed to be transmitted using Ethernet physical media. This media may support the encapsulation of higher level protocols (like copper or fiber) or may not (like coaxial cable).
+An Ethernet frame is a Layer 2 transport mechanism that allows for the switching of data in a L2 network using Media Access Control (MAC) addresses. Ethernet frames are designed to be transmitted using Ethernet physical media. 
 
-The first Ethernet network was created in 1980 at Xerox Parc to connect a computer to a laser printer (at the time, it was called a DIX frame, short for Digital, Intel, and Xerox). It was later standardised by the IEEE in the 802.3 standard for Carrier Sense Multiple Access for Collision Detection (CSMA/CD). 
+The first Ethernet network was created in 1980 at Xerox Parc to connect a computer to a laser printer (at the time, it was called a DIX frame, short for Digital, Intel, and Xerox). It was later standardised by the IEEE in the 802.3 standard for Carrier Sense Multiple Access for Collision Detection (CSMA/CD). CSMA/CD was designed to prevent both hosts attempting to transmit a frame over a single half-duplex link at the same time (which would cause a collision). Hosts listen to the network to see if the link is free, and if it is then they attempt to forward their frames. If they detect a collision, they stop forwarding and transmit a jam signal to let other devices know of the collision. CSMA/CD is not required in full-duplex networks, as each host as its own dedicated channel, thereby removing the risk of multiple devices transmitting over the same channel at the same time.
 
 Ethernet frames are the standard transmission protocol for Layer 2 networks. Importantly, Ethernet frames are capable of encapsulating higher level protocols (such as Internet Protocol (IP) packets) for transmission.
 
@@ -58,6 +58,20 @@ The next field in the frame is the EtherType field, which identifies which highe
 The Payload field contains the data that is intended for transport over the Ethernet network. The Payload is opaque to Ethernet - Ethernet is just the transport for the encapsulated Payload. Payload data will frequently have its own headers and reliability measures to ensure the Payload is correctly received and interpreted by the receiver. The Maximum Transmission Unit (MTU) comes from the byte range used by the Payload field for Ethernet frames (46 - 1500 bytes), though this can be expanded if necessary (in the case of jumbo frames, which have an MTU of 9100 bytes). If jumbo frames are required, they need to be configured across every hop in the network, otherwise the frame will either be fragmented (if the DF bit is not set) or dropped (if the DF bit is set).
 
 The Ethernet frame concludes with the Frame Check Sequence (FCS) field. The FCS field is used for error detection - the frame is evaluated by the CRC-32 value to generate a 4 byte representation of the frame. The receiver runs the same computation on the received frame and evaluates their value against the sender's FCS. If the FCS does not match, the Ethernet frame is dropped. There is no error correction or in-built reliability mechanism into FCS - if there is no match, the frame is dropped.
+
+When 802.1q tagging is used to trunk VLANs across a link, an additional field is added to the 802.3 Ethernet frame. 
+
+| Preamble | SFD    | Destination MAC | Source MAC | ==802.1Q Tag== | EtherType | Payload       | FCS     |
+| -------- | ------ | --------------- | ---------- | ---------- | --------- | ------------- | ------- |
+| 7 bytes  | 1 byte | 6 bytes         | 6 bytes    | ==4 bytes==    | 2 bytes   | 46-1500 bytes | 4 bytes |
+
+The 802.1q tag consists of 4 components. 
+The Type ID (TPID) field is 16 bits and is used to identify the frame as an 802.1q tagged frame. Consider it similar to the EtherType field in the traditional Ethernet II frame, except that it is used specifically to signal that VLAN information will be transmitted in the next 2 bytes (instead of the Payload). 
+The Type Control Information (TCI) field consists of three sub-fields. Firstly, the 3-bit Priority Code Point (PCP) value is used to convey Class of Service (CoS) information regarding the frame's priority level. The 1-bit Drop Eligible Indicator (DEI) value is used to signal whether the frame can be dropped if the link is congested. The 12-bit VLAN ID (VID) value specifies the VLAN that the frame belongs to. 
+Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad). This is primarily used by ISPs to allow both customer and ISP to tag their traffic. 
+
+
+
 
 ## Design Considerations 
 ## Scalability 
