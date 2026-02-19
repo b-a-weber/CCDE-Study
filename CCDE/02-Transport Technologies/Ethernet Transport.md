@@ -61,17 +61,14 @@ The Ethernet frame concludes with the Frame Check Sequence (FCS) field. The FCS 
 
 When 802.1q tagging is used to trunk VLANs across a link, an additional field is added to the 802.3 Ethernet frame. 
 
-| Preamble | SFD    | Destination MAC | Source MAC | ==802.1Q Tag== | EtherType | Payload       | FCS     |
-| -------- | ------ | --------------- | ---------- | ---------- | --------- | ------------- | ------- |
-| 7 bytes  | 1 byte | 6 bytes         | 6 bytes    | ==4 bytes==    | 2 bytes   | 46-1500 bytes | 4 bytes |
+| Preamble | SFD    | Destination MAC | Source MAC | **802.1Q Tag** | EtherType | Payload       | FCS     |
+| -------- | ------ | --------------- | ---------- | -------------- | --------- | ------------- | ------- |
+| 7 bytes  | 1 byte | 6 bytes         | 6 bytes    | **4 bytes**    | 2 bytes   | 46-1500 bytes | 4 bytes |
 
 The 802.1q tag consists of 4 components. 
-The Type ID (TPID) field is 16 bits and is used to identify the frame as an 802.1q tagged frame. Consider it similar to the EtherType field in the traditional Ethernet II frame, except that it is used specifically to signal that VLAN information will be transmitted in the next 2 bytes (instead of the Payload). 
-The Type Control Information (TCI) field consists of three sub-fields. Firstly, the 3-bit Priority Code Point (PCP) value is used to convey Class of Service (CoS) information regarding the frame's priority level. The 1-bit Drop Eligible Indicator (DEI) value is used to signal whether the frame can be dropped if the link is congested. The 12-bit VLAN ID (VID) value specifies the VLAN that the frame belongs to. 
-Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad). This is primarily used by ISPs to allow both customer and ISP to tag their traffic. 
-
-
-
+The Tag ID (TPID) field is 16 bits and is used to identify the frame as an 802.1q tagged frame. Consider it similar to the EtherType field in the traditional Ethernet II frame, except that it is used specifically to signal that VLAN information will be transmitted in the next 2 bytes (instead of the Payload). 
+The Tag Control Information (TCI) field consists of three sub-fields. Firstly, the 3-bit Priority Code Point (PCP) value is used to convey Class of Service (CoS) information regarding the frame's priority level. The 1-bit Drop Eligible Indicator (DEI) value is used to signal whether the frame can be dropped if the link is congested. The 12-bit VLAN ID (VID) value specifies the VLAN that the frame belongs to. 
+Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad). This is primarily used by ISPs to allow both customer and ISP to tag their traffic. The outer tag used by the ISP is known as the S-TAG (value of 0x88A8) and the inner tag used by the customer is known as the C-TAG.
 
 ## Design Considerations 
 ## Scalability 
