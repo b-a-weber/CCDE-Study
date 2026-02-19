@@ -55,9 +55,10 @@ The next field in the frame is the EtherType field, which identifies which highe
 	- 0x88CC: LLDP
 	- 0x8906: Fibre Channel over Ethernet (FCoE)
 
-The Payload field contains the data that is intended for transport over the Ethernet network. The Payload is opaque to Ethernet - Ethernet is just the transport for the encapsulated Payload. Payload data will frequently have its own headers and reliability measures to ensure the Payload is correctly received and interpreted by the receiver. The Maximum Transmission Unit (MTU) comes from the byte range used for Ethernet frames (46 - 1500 bytes), though this can be expanded if necessary (in the case of jumbo frames, which have an MTU of 9100 bytes). 
+The Payload field contains the data that is intended for transport over the Ethernet network. The Payload is opaque to Ethernet - Ethernet is just the transport for the encapsulated Payload. Payload data will frequently have its own headers and reliability measures to ensure the Payload is correctly received and interpreted by the receiver. The Maximum Transmission Unit (MTU) comes from the byte range used by the Payload field for Ethernet frames (46 - 1500 bytes), though this can be expanded if necessary (in the case of jumbo frames, which have an MTU of 9100 bytes). If jumbo frames are required, they need to be configured across every hop in the network, otherwise the frame will either be fragmented (if the DF bit is not set) or dropped (if the DF bit is set).
 
-The Ethernet frame concludes with the Frame Check Sequence (FCS) field. The FCS field is used for error detection - the frame is evaluated by the CRC-32 value to generate a 4 byte representation of the frame. The receiver runs the same computation on the received frame and evaluates their value against the sender's FCS. If the FCS does not match, the Ethernet frame is dropped.
+The Ethernet frame concludes with the Frame Check Sequence (FCS) field. The FCS field is used for error detection - the frame is evaluated by the CRC-32 value to generate a 4 byte representation of the frame. The receiver runs the same computation on the received frame and evaluates their value against the sender's FCS. If the FCS does not match, the Ethernet frame is dropped. There is no error correction or in-built reliability mechanism into FCS - if there is no match, the frame is dropped.
+
 ## Design Considerations 
 ## Scalability 
 ## Resilience and Redundancy 
