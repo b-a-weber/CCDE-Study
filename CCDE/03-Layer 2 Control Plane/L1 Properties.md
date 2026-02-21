@@ -1,9 +1,9 @@
-tags:
-domain: 03-Layer 2 Control Plane
-subdomain: Down detection, interface convergence over physical media
-related: []
-status: draft
-date created: 2026-02-15 18:02
+tags: \
+domain: 03-Layer 2 Control Plane \
+subdomain: Down detection, interface convergence over physical media \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:02 \
 last modified: 2026-02-15 18:02
 
 

@@ -1,9 +1,9 @@
-tags:
-domain: 04-Layer 3 Control Plane
-subdomain: Multi-layer hierarchical network designs
-related: []
-status: draft
-date created: 2026-02-15 18:48
+tags: \
+domain: 04-Layer 3 Control Plane \
+subdomain: Multi-layer hierarchical network designs \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:48 \
 last modified: 2026-02-15 18:50
 
 

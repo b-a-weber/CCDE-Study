@@ -1,9 +1,9 @@
-tags:
-domain: 03-Layer 2 Control Plane
-subdomain: Switch clustering mechanisms & tradeoffs
-related: []
-status: draft
-date created: 2026-02-15 18:43
+tags: \
+domain: 03-Layer 2 Control Plane \
+subdomain: Switch clustering mechanisms & tradeoffs \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:43 \
 last modified: 2026-02-15 18:43
 
 

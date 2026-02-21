@@ -1,9 +1,9 @@
-tags:
-domain: 04-Layer 3 Control Plane
-subdomain: PBR, NAT/PAT design, subnetting strategies, RIB-FIB relationships
-related: []
-status: draft
-date created: 2026-02-15 20:00
+tags: \
+domain: 04-Layer 3 Control Plane \
+subdomain: PBR, NAT/PAT design, subnetting strategies, RIB-FIB relationships \
+related: [] \
+status: draft \
+date created: 2026-02-15 20:00 \
 last modified: 2026-02-15 20:00
 
 

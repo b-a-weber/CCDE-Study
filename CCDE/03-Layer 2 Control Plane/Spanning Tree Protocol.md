@@ -1,9 +1,9 @@
-tags:
-domain: 03-Layer 2 Control Plane
-subdomain: STP types
-related: []
-status: draft
-date created: 2026-02-15 18:03
+tags: \
+domain: 03-Layer 2 Control Plane \
+subdomain: STP types \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:03 \
 last modified: 2026-02-15 18:03
 
 

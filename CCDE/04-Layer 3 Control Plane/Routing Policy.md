@@ -1,9 +1,9 @@
-tags:
-domain: 04-Layer 3 Control Plane
-subdomain: Route maps, prefix lists, distribute lists, communities, local preference, MED
-related: []
-status: draft
-date created: 2026-02-15 20:00
+tags: \
+domain: 04-Layer 3 Control Plane \
+subdomain: Route maps, prefix lists, distribute lists, communities, local preference, MED \
+related: [] \
+status: draft \
+date created: 2026-02-15 20:00 \
 last modified: 2026-02-15 20:00
 
 

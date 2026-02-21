@@ -1,9 +1,9 @@
-tags:
-domain: 03-Layer 2 Control Plane
-subdomain: L2 fate sharing, redundancy, virtualisation, segmentation
-related: []
-status: draft
-date created: 2026-02-15 18:46
+tags: \
+domain: 03-Layer 2 Control Plane \
+subdomain: L2 fate sharing, redundancy, virtualisation, segmentation \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:46 \
 last modified: 2026-02-15 18:46
 
 

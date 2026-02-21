@@ -1,9 +1,9 @@
-tags:
-domain: 02-Transport Technologies
-subdomain: Wireless backhaul & transit networks
-related: []
-status: draft
-date created: 2026-02-15 18:00
+tags: \
+domain: 02-Transport Technologies \
+subdomain: Wireless backhaul & transit networks \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:00 \
 last modified: 2026-02-15 18:00
 
 

@@ -1,9 +1,9 @@
-tags:
-domain: 02-Transport Technologies
-subdomain: Physical mediums (copper/fiber) & limitations
-related: []
-status: draft
-date created: 2026-02-15 18:01
+tags: \
+domain: 02-Transport Technologies \
+subdomain: Physical mediums (copper/fiber) & limitations \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:01 \
 last modified: 2026-02-15 18:01
 
 

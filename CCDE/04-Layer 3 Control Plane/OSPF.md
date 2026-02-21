@@ -1,9 +1,9 @@
-tags:
-domain: 04-Layer 3 Control Plane
-subdomain: OPSF neighboring/adjacency process, passive interfaces, OSPF area types
-related: []
-status: draft
-date created: 2026-02-15 18:53
+tags: \
+domain: 04-Layer 3 Control Plane \
+subdomain: OPSF neighboring/adjacency process, passive interfaces, OSPF area types \
+related: [] \
+status: draft \
+date created: 2026-02-15 18:53 \
 last modified: 2026-02-15 18:53
 
 

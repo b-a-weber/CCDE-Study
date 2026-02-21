@@ -1,9 +1,9 @@
-tags:
-domain: 04-Layer 3 Control Plane
-subdomain: Fate sharing, redundancy design, failure domain containment
-related: []
-status: draft
-date created: 2026-02-15 20:00
+tags: \
+domain: 04-Layer 3 Control Plane \
+subdomain: Fate sharing, redundancy design, failure domain containment \
+related: [] \
+status: draft \
+date created: 2026-02-15 20:00 \
 last modified: 2026-02-15 20:00
 
 
