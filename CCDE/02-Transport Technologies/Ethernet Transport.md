@@ -80,6 +80,10 @@ The Tag Control Information (TCI) field consists of three sub-fields. Firstly, t
 Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad). This is primarily used by ISPs to allow both customer and ISP to tag their traffic. The outer tag used by the ISP is known as the S-TAG (value of 0x88A8) and the inner tag used by the customer is known as the C-TAG.
 
 ## Design Considerations 
+
+Ethernet is the typical transport protocol used in LAN networks. It is almost always used to connect networked devices over an appropriate physical media, with the only caveat being that Infiniband (NVIDIA proprietary transport) is popular for high-performance data center networking.
+
+A major design consideration for Ethernet is ensuring that MTU values are standardised across the network. 
 ## Scalability 
 ## Resilience and Redundancy 
 ## Performance Characteristics 
