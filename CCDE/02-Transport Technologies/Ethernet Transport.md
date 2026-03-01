@@ -83,8 +83,20 @@ Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad).
 
 Ethernet is the typical transport protocol used in LAN networks. It is almost always used to connect networked devices over an appropriate physical media, with the only caveat being that Infiniband (NVIDIA proprietary transport) is popular for high-performance data center networking.
 
-A major design consideration for Ethernet is ensuring that MTU values are standardised across the network. 
+##### MTU Alignment
+
+A major design consideration for Ethernet is ensuring that MTU values are standardised across the network. If MTU values vary between hops, the frame may be silently dropped or unintentionally fragmented. Some specific technologies either require or advise the use of jumbo frames to allow for more fields to be added to the Ethernet frame and/or to dramatically expand the size of the Payload field. 
+
+Data center switching typically requires the use of jumbo frames to support storage networking protocols (such as FCoE, NFS, iSCSI). For FCoE, this is a hard requirement - the standard FCoE frame has a minimum frame size of 2158 bytes. For iSCSI & NFS, there is no hard technical requirement - but, as iSCSI incorporates SCSI commands inside TCP/IP, the number of frames transmitted for an I/O operation can be dramatically reduced if jumbo frames are used. 
+
+BGP-EVPN routed fabrics with a VXLAN overlay also use jumbo frames to carry the VXLAN headers (50 bytes which encapsulate the original Ethernet frame). As VXLAN may be used in campus networks as well as DC fabrics (i.e. Cisco SDA), it is important to ensure that each hop is configured to use jumbo frames. Typically, the VXLAN headers are removed at the border node to allow for native IP transport over the WAN, which means that WAN hops do not need to use jumbo frames. The VXLAN headers are then added by the ingress border node on the other end of the WAN link. More detail on the use of VXLAN as a data plane overlay will be covered elsewhere.
+
+##### Broadcast Domain Sizing
+
+Layer 2 broadcast domains are used to forward traffic to all hosts within a logical network segment, typically for network discovery purposes. Broadcast domains need to be appropriately sized in order to reduce the sending of unknown unicast frames, which are used to forward traffic when the destination MAC is not available in the CAM table. Large L2 broadcast domains result in significant noise generation when the switch floods the segment with unknown unicast traffic in an effort to locate the destination host. 
 ## Scalability 
+
+
 ## Resilience and Redundancy 
 ## Performance Characteristics 
 ## Operational Complexity 
