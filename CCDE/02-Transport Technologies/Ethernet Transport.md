@@ -81,7 +81,7 @@ Frames may also hold two 802.1q tags, known as double tagging or QinQ (802.1ad).
 
 ## Design Considerations 
 
-Ethernet is the typical transport protocol used in LAN networks. It is almost always used to connect networked devices over an appropriate physical media, with the only caveat being that Infiniband (NVIDIA proprietary transport) is popular for high-performance data center networking.
+Ethernet is the typical transport protocol used in LAN networks. It is almost always used to connect networked devices over an appropriate physical media, with the only caveat being that Infiniband is popular for high-performance data center networking.
 
 ##### MTU Alignment
 
@@ -93,21 +93,19 @@ BGP-EVPN routed fabrics with a VXLAN overlay also use jumbo frames to carry the 
 
 ##### Broadcast Domain Sizing
 
-Layer 2 broadcast domains are used to forward traffic to all hosts within a logical network segment, typically for network discovery purposes. Broadcast domains need to be appropriately sized in order to reduce the sending of unknown unicast frames, which are used to forward traffic when the destination MAC is not available in the CAM table. Large L2 broadcast domains result in significant noise generation when the switch floods the segment with unknown unicast traffic in an effort to locate the destination host. 
-## Scalability 
+Layer 2 broadcast domains are used to forward traffic to all hosts within a logical network segment, typically for network discovery purposes. Broadcast domains need to be appropriately sized in order to reduce the sending of unknown unicast frames, which are used to forward traffic when the destination MAC is not available in the CAM table. Large L2 broadcast domains result in significant noise generation when the switch floods the segment with unknown unicast traffic in an effort to locate the destination host. A similar approach is used for ARP discovery, except the traffic is broadcast (`FF:FF:FF:FF:FF:FF`) instead of unknown unicast. Logically restricting networks to contain a single system, application, or group of end users is a sensible approach towards ensuring that broadcast domains do not become congested when CAM tables flush or hosts change ports.
 
+Furthermore, the STP failure domain is determined by the size of the broadcast domain. In the context of a large broadcast domain, a topology change can cause TCN flooding and MAC table flushes across every switch within the L2 domain. Minimising broadcast domain size can reduce the risk of TCN storms degrading switching performance. This should be considered in conjunction with the configuration of appropriate STP guard mechanisms and pre-defined STP root switches set by the STP precedence value.
 
-## Resilience and Redundancy 
-## Performance Characteristics 
-## Operational Complexity 
-## Cost Factors 
-## When to Use / When to Avoid 
+This has become less of a concern with an industry-wide migration to the routed access topology that extends Layer 3 to the access layer.
 
-**Use when:** - 
+##### VLAN ID Exhaustion
 
-**Avoid when:** - 
+There is also a limit to the number of unique VLANs available within the VLAN ID field. The VLAN ID is a 12 bit tag, which supports 4096 unique VLANs. On large networks, this number may be exhausted. There are multiple ways to get around this:
 
-## Design Trade-offs 
+	1. MPLS PE-CE 802.1Q: VLAN IDs are only locally unique within the PE network, allowing for multiple customer sites to use the same VLAN ID without causing issues. MPLS encapsulation replaces the need for globally significant VLANs.
+	2. VXLAN Overlay: VXLAN uses a VXLAN Network Identifier (VNI) within the header to advertise the VXLAN network. The VNI is a 24-bit tag, which supports roughly 4 million unique VNIs.
+	3. QinQ (802.1ad): Provider networks can stack an outer S-TAG on top of a customer C-TAG, allowing a single provider VLAN to carry multiple customer VLANs without requiring globally unique customer VLAN IDs.
 
 ## Links 
 
